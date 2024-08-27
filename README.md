@@ -1,6 +1,7 @@
 # Lora Profile
 
 - lite profiles on zora
+<img width="1440" alt="Screenshot 2024-08-26 at 9 55 10 PM" src="https://github.com/user-attachments/assets/7033fa1c-14a4-4c97-beeb-343bc0e15d14">
 
 ## Setup
 
