@@ -2,7 +2,6 @@
 
 import { useZoraProfileProvider } from '@/providers/ZoraProfileProvider'
 import ProfileHeader from './ProfileHeader'
-import ProfileCollections from './ProfileCollections'
 
 const ProfilePage = () => {
   const { creator } = useZoraProfileProvider()
