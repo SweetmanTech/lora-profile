@@ -11,7 +11,7 @@
 
 ## Authors
 
-- [@arpitgupta](https://github.com/arpitgupta1214) ([warpcast](https://warpcast.com/arpitgupta/))
+- [@sweetmantech](https://github.com/sweetmantech) ([warpcast](https://warpcast.com/sweetman-eth))
 
 ## License
 
