@@ -1,4 +1,6 @@
-# LORA CREATE
+# Lora Profile
+
+- lite profiles on zora
 
 ## Setup
 

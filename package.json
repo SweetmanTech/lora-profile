@@ -1,6 +1,6 @@
 {
-  "name": "el-nino-map",
-  "version": "0.9.4",
+  "name": "lora-profile",
+  "version": "0.0.1",
   "scripts": {
     "build": "rm -rf .next && next build",
     "dev": "next dev",
@@ -15,8 +15,11 @@
   "license": "MIT",
   "dependencies": {
     "@coinbase/onchainkit": "^0.27.0",
+    "@radix-ui/react-avatar": "^1.1.0",
     "@radix-ui/react-label": "^2.1.0",
     "@radix-ui/react-select": "^2.1.1",
+    "@radix-ui/react-slot": "^1.1.0",
+    "@radix-ui/react-tabs": "^1.1.0",
     "@stackso/js-core": "^0.4.7",
     "@tanstack/react-query": "^5.51.23",
     "@vercel/analytics": "^1.2.2",
@@ -55,6 +58,5 @@
     "postcss": "^8.4.35",
     "prettier": "^3.2.4",
     "typescript": "^5.3.3"
-  },
-  "packageManager": "yarn@4.4.0+sha512.91d93b445d9284e7ed52931369bc89a663414e5582d00eea45c67ddc459a2582919eece27c412d6ffd1bd0793ff35399381cb229326b961798ce4f4cc60ddfdb"
+  }
 }
