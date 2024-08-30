@@ -1,12 +1,9 @@
 'use client'
 
 import WagmiProvider from './WagmiProvider'
-import { ZoraProfileProvider } from './ZoraProfileProvider'
 
 const Providers = ({ children }: { children: React.ReactNode }) => (
-  <WagmiProvider>
-    <ZoraProfileProvider>{children}</ZoraProfileProvider>
-  </WagmiProvider>
+  <WagmiProvider>{children}</WagmiProvider>
 )
 
 export default Providers

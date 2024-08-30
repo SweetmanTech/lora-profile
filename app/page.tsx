@@ -1,5 +1,5 @@
-import ProfilePage from '@/components/ProfilePage'
+import { redirect } from 'next/navigation'
 
-const Page = () => <ProfilePage />
-
-export default Page
+export default function Home() {
+  redirect('/imagine.zora.eth')
+}

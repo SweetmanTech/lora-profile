@@ -1,11 +1,10 @@
 'use client'
-
 import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/Avatar'
 import truncate from '@/lib/truncate'
 import { useZoraProfileProvider } from '@/providers/ZoraProfileProvider'
 
 const ProfileHeader = () => {
-  const { creator } = useZoraProfileProvider()
+  const creator = useZoraProfileProvider()
 
   return (
     <header className="border-b border-gray-200 px-4 py-4 sm:px-6 lg:px-8">

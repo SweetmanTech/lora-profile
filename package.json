@@ -30,6 +30,7 @@
     "clsx": "^2.1.1",
     "frog": "latest",
     "hono": "latest",
+    "lodash": "^4.17.21",
     "lucide-react": "^0.427.0",
     "next": "^14.2.2",
     "react": "^18.3.1",
@@ -42,6 +43,7 @@
     "wagmi": "^2.12.5"
   },
   "devDependencies": {
+    "@types/lodash": "^4.17.7",
     "@types/negotiator": "^0.6.3",
     "@types/node": "^20.11.8",
     "@types/react": "18.2.48",
