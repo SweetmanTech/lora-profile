@@ -20,3 +20,5 @@ export default async function Creator({ params }) {
     </ZoraProfileProvider>
   )
 }
+
+export const dynamic = 'force-dynamic'
