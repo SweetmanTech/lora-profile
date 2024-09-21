@@ -1,12 +1,22 @@
 import { Address } from 'viem'
-import stackClient from './client'
 
 const getEvents = async (address: Address) => {
-  const events = await stackClient.getEvents({
-    address,
-  })
+  const response = await fetch(`https://api.myco.wtf/api/zora/tokens?creatorAddress=${address}`)
+  const data = await response.json()
+  const events = data.tokens.reduce((acc, event) => {
+    const { collection, tokenId } = event.metadata
+    const key = `${collection}-${tokenId}`
 
-  return events || []
+    if (!acc[key]) {
+      acc[key] = event
+    }
+
+    acc[key].points += event.points
+
+    return acc
+  }, {})
+
+  return Object.values(events)
 }
 
 export default getEvents
