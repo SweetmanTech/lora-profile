@@ -1,12 +1,9 @@
 import { Address } from 'viem'
-import stackClient from './client'
 
 const getEvents = async (address: Address) => {
-  const events = await stackClient.getEvents({
-    address,
-  })
-
-  return events || []
+  const response = await fetch(`https://api.myco.wtf/api/zora/tokens?creatorAddress=${address}`)
+  const data = await response.json()
+  return data.tokens
 }
 
 export default getEvents
