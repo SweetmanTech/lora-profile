@@ -1,9 +1,7 @@
 import {
-  goerli,
   mainnet,
   optimism,
   polygon,
-  polygonMumbai,
   sepolia,
   baseSepolia,
   optimismSepolia,
