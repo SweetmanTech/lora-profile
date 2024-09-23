@@ -5,8 +5,10 @@ const getZoraChainName = (chainName: string) => {
     case 'zoraSepolia':
       return 'zsep'
     case 'base':
+    case 'mainnet':
       return 'base'
     case 'baseSepolia':
+    case 'sepolia':
       return 'bsep'
     default:
       return 'base'
