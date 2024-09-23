@@ -4,7 +4,7 @@ export type EVENT_TYPE = {
   event: string
   address: Address
   timestamp: string
-  poiints: number
+  points: number
   metadata: {
     user: Address
     tokenId: string
