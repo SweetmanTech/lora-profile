@@ -1,30 +1,21 @@
-import getZoraChainName from '@/lib/getZoraChainName'
-import getTimeAgo from '@/lib/stack/getTimeAgo'
-import { cn } from '@/lib/utils'
-import getCollectionUrl from '@/lib/zora/getCollectionUrl'
+import useMetadata from '@/hooks/useMetadata'
+import getIpfsLink from '@/lib/ipfs/getIpfsLink'
+import { EVENT_TYPE } from '@/types/event'
+import { METADATA_TYPE } from '@/types/metadata'
+import Image from 'next/image'
 
-const Point = ({ event }: any) => {
-  const chainName = event.metadata.uniqueId.split('-')[0]
-
-  const handleClick = (address) => {
-    const isTestnet = chainName.toLowerCase().includes('sepolia')
-    const url = getCollectionUrl(getZoraChainName(chainName), address, isTestnet)
-    window.open(url, '_blank')
-  }
+const Point = ({ event }: { event: EVENT_TYPE }) => {
+  const metadata: METADATA_TYPE = useMetadata(event)
 
   return (
-    <div className="flex gap-3 items-center">
-      <button
-        type="button"
-        className={cn('text-xl text-blue-700')}
-        onClick={() => handleClick(event.metadata.collection)}
-      >
-        {event.event.replace(/_/g, ' ')}
-      </button>
-      <p>({getTimeAgo(event.timestamp)})</p>
-      <a href="https://www.stack.so/leaderboard/leaderboard-40a3-78225-3067" target="_blank">
-        <p className="text-green-700 text-xl">+{event.points} points</p>
-      </a>
+    <div className="relative w-full aspect-[1/1]">
+      <Image
+        src={getIpfsLink(metadata?.image || '')}
+        alt=""
+        layout="fill"
+        className="absolute w-full h-full left-0  top-0"
+      />
+      <p>{metadata?.name || ''}</p>
     </div>
   )
 }
