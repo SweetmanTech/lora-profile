@@ -1,3 +1,4 @@
+import getZoraChainName from '@/lib/getZoraChainName'
 import getTimeAgo from '@/lib/stack/getTimeAgo'
 import { cn } from '@/lib/utils'
 import getCollectionUrl from '@/lib/zora/getCollectionUrl'

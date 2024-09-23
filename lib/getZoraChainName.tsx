@@ -12,3 +12,5 @@ const getZoraChainName = (chainName: string) => {
       return 'base'
   }
 }
+
+export default getZoraChainName
