@@ -3,7 +3,7 @@ import ProfileHeader from './ProfileHeader'
 
 const ProfilePage = () => {
   return (
-    <div className="flex flex-col min-h-screen mt-11 md:max-w-[75%]">
+    <div className="flex flex-col h-screen md:max-w-[75%] mt-11">
       <ProfileHeader />
       <Points />
     </div>
