@@ -12,7 +12,12 @@ const Point = ({ event }: { event: EVENT_TYPE }) => {
 
   const handleClick = (address) => {
     const isTestnet = chainName.toLowerCase().includes('sepolia')
-    const url = getCollectionUrl(getZoraChainName(chainName), address, isTestnet)
+    const url = getCollectionUrl(
+      getZoraChainName(chainName),
+      address,
+      isTestnet,
+      event.metadata.tokenId,
+    )
     window.open(url, '_blank')
   }
 
