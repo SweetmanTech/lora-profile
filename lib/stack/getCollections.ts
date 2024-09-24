@@ -6,7 +6,7 @@ const getCollections = async (address: Address) => {
   const collections = data.collections
   const tokens = []
 
-  for (let collection of collections) {
+  for (const collection of collections) {
     const tokensCreated = parseInt(collection.tokensCreated, 10)
     for (let tokenId = 1; tokenId <= tokensCreated; tokenId++) {
       tokens.push({

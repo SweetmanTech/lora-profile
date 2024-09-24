@@ -1,5 +1,5 @@
 import ProfilePage from '@/components/ProfilePage'
-import getEvents from '@/lib/stack/getEvents'
+import getCollections from '@/lib/stack/getCollections'
 import fetchProfile from '@/lib/zora/fetchProfile'
 import { PointsProvider } from '@/providers/PointsProvider'
 import { ZoraProfileProvider } from '@/providers/ZoraProfileProvider'
@@ -10,11 +10,11 @@ export default async function Creator({ params }) {
   const creator = _.get(params, ['creator'])
   const profile = await fetchProfile(creator)
   const creatorAddress = profile.address
-  const events = await getEvents(creatorAddress as Address)
+  const collections = await getCollections(creatorAddress as Address)
 
   return (
     <ZoraProfileProvider profile={profile}>
-      <PointsProvider events={events}>
+      <PointsProvider collections={collections}>
         <ProfilePage />
       </PointsProvider>
     </ZoraProfileProvider>
