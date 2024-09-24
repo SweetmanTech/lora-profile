@@ -1,22 +1,18 @@
 import { getPublicClient } from '@/lib/clients'
-import getChainId from '@/lib/getChainId'
 import getIpfsLink from '@/lib/ipfs/getIpfsLink'
-import { EVENT_TYPE } from '@/types/event'
+import { COLLECTION_TYPE } from '@/types/collection'
 import { zoraCreator1155ImplABI } from '@zoralabs/protocol-deployments'
 import { useEffect, useState } from 'react'
 import { Address } from 'viem'
 
-const useCollection = (data: EVENT_TYPE) => {
+const useCollection = (data: COLLECTION_TYPE) => {
   const [collection, setCollection] = useState(null)
 
   useEffect(() => {
     const init = async () => {
-      const chainName = data.metadata.uniqueId.split('-')[0]
-      const collectionAddress = data.metadata.collection
-      const chainId = getChainId(chainName)
-      const publicClient = getPublicClient(chainId)
+      const publicClient = getPublicClient(parseInt(data.chainId, 10))
       const uri = await publicClient.readContract({
-        address: collectionAddress as Address,
+        address: data.address as Address,
         abi: zoraCreator1155ImplABI,
         functionName: 'contractURI',
       })

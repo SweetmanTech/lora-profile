@@ -4,8 +4,8 @@ import React, { createContext, useContext } from 'react'
 
 const PointsContext = createContext(undefined)
 
-export function PointsProvider({ events, children }) {
-  return <PointsContext.Provider value={{ events }}>{children}</PointsContext.Provider>
+export function PointsProvider({ collections, children }) {
+  return <PointsContext.Provider value={{ collections }}>{children}</PointsContext.Provider>
 }
 
 export function usePoints() {

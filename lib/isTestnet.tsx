@@ -1,18 +1,16 @@
 import { base, baseSepolia, zora, zoraSepolia } from 'viem/chains'
 
-const getZoraChainName = (chainId: number) => {
+const isTestnet = (chainId: number) => {
   switch (chainId) {
     case baseSepolia.id:
-      return 'bsep'
     case zoraSepolia.id:
-      return 'zsep'
+      return true
     case base.id:
-      return 'base'
     case zora.id:
-      return 'zora'
+      return false
     default:
-      return 'base'
+      return true
   }
 }
 
-export default getZoraChainName
+export default isTestnet
