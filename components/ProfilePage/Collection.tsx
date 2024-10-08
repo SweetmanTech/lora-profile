@@ -22,7 +22,7 @@ const Collection = ({ data }: { data: METADATA_TYPE & COLLECTION_TYPE }) => {
         type="button"
         onClick={handleClick}
       >
-        <Image src={getIpfsLink(data.image || '')} alt="" layout="fill" />
+        <Image src={getIpfsLink(data.image || '')} alt="" layout="fill" className="object-cover" />
       </button>
       <p className="w-full overflow-hidden text-ellipse truncate text-md text-center">
         {data?.name}

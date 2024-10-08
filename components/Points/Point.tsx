@@ -24,7 +24,7 @@ const Point = ({ data }: { data: METADATA_TYPE & COLLECTION_TYPE & { tokenId: nu
         src={getIpfsLink(data?.image || '')}
         alt=""
         layout="fill"
-        className="absolute w-full h-full left-0  top-0"
+        className="absolute w-full h-full left-0  top-0 object-cover"
       />
     </button>
   )
