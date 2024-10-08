@@ -17,11 +17,9 @@ const Collections = () => {
             <LoaderCircle className="animate-spin h-5 w-5" />
           </div>
         ) : (
-          metadataOfCollection.map(
-            (metadata: METADATA_TYPE & COLLECTION_TYPE, index: number) => (
-              <Collection data={metadata} key={index} />
-            ),
-          )
+          metadataOfCollection.map((metadata: METADATA_TYPE & COLLECTION_TYPE, index: number) => (
+            <Collection data={metadata} key={index} />
+          ))
         )}
       </div>
     </div>
