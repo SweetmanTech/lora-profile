@@ -6,12 +6,12 @@ import { METADATA_TYPE } from '@/types/metadata'
 import Image from 'next/image'
 
 const Point = ({ data }: { data: METADATA_TYPE & COLLECTION_TYPE & { tokenId: number } }) => {
-  const handleClick = (address) => {
+  const handleClick = () => {
     const chainName = getZoraChainName(data.chainId)
     const isTestnet = chainName.toLowerCase().includes('sep')
     const url = getCollectionUrl(
       getZoraChainName(data.chainId),
-      address,
+      data.address,
       isTestnet,
       data.tokenId.toString(),
     )

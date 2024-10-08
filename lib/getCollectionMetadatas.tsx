@@ -28,9 +28,9 @@ const getCollectionMetadatas = async (collections: COLLECTION_TYPE[]) => {
     })
 
     const uris = results.filter((result: any) => !result.error).map((result: any) => result.result)
-    filtered = group.filter((_: any, i: number) => !results[i]?.error)
+    const filteredGroup = group.filter((_: any, i: number) => !results[i]?.error)
     collectionUris = collectionUris.concat(uris)
-    filtered = filtered.concat(filtered)
+    filtered = filtered.concat(filteredGroup)
   }
 
   const metadataPromise = collectionUris.map(async (uri: string) => {
@@ -38,7 +38,6 @@ const getCollectionMetadatas = async (collections: COLLECTION_TYPE[]) => {
     const metadata = await response.json()
     return metadata
   })
-
   const metadata: any = await Promise.all(metadataPromise)
 
   return metadata.map((data, i) => ({

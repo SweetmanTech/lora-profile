@@ -31,13 +31,14 @@ const getTokenMetadatas = async (collections: COLLECTION_TYPE[]) => {
 
     const uris = results.filter((result: any) => !result.error).map((result: any) => result.result)
     tokenUris = tokenUris.concat(uris)
-    filtered = calls
+    const filteredTokens = calls
       .filter((_, i) => !results[i]?.error)
       .map((call) => ({
         address: call.address,
         tokenId: call.args[0],
         chainId: group[0].chainId,
       }))
+    filtered = filtered.concat(filteredTokens)
   }
 
   const metadataPromise = tokenUris.map(async (uri: string, i: number) => {
