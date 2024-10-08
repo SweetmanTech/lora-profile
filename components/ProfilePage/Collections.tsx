@@ -1,20 +1,26 @@
 'use client'
 
-import getCollections from '@/lib/getCollections'
-import { usePoints } from '@/providers/PointsProvider'
 import Collection from './Collection'
-import { EVENT_TYPE } from '@/types/event'
+import { useCollectionProvider } from '@/providers/CollectionProvider'
+import { COLLECTION_TYPE } from '@/types/collection'
+import { METADATA_TYPE } from '@/types/metadata'
+import { LoaderCircle } from 'lucide-react'
 
 const Collections = () => {
-  const { events } = usePoints()
-  const collections = getCollections(events)
+  const { metadataOfCollection, loading } = useCollectionProvider()
 
   return (
-    <div className="w-full max-w-3xl overflow-hidden mb-2">
-      <div className="flex gap-2 overflow-x-auto">
-        {collections.map((collection: EVENT_TYPE) => (
-          <Collection data={collection} key={collection.address} />
-        ))}
+    <div className="w-screen px-3 md:px-0 md:w-full max-w-3xl mt-6 mb-2 border border-t">
+      <div className="flex gap-12 overflow-x-auto">
+        {loading ? (
+          <div className="w-full flex justify-center">
+            <LoaderCircle className="animate-spin h-5 w-5" />
+          </div>
+        ) : (
+          metadataOfCollection.map((metadata: METADATA_TYPE & COLLECTION_TYPE, index: number) => (
+            <Collection data={metadata} key={index} />
+          ))
+        )}
       </div>
     </div>
   )

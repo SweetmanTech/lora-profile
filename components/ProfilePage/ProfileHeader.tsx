@@ -7,7 +7,7 @@ const ProfileHeader = () => {
   const creator = useZoraProfileProvider()
 
   return (
-    <header className="border-b border-gray-200 px-4 sm:px-6 lg:px-8">
+    <header className="px-4 sm:px-6 lg:px-8">
       <div className="flex items-center justify-between">
         <div className="flex items-start md:items-center space-x-4">
           <Avatar className="h-20 w-20 md:h-28 md:w-28">

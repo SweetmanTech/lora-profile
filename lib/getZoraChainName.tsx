@@ -1,14 +1,14 @@
-const getZoraChainName = (chainName: string) => {
-  switch (chainName) {
-    case 'zora':
+import { base, baseSepolia, zora, zoraSepolia } from 'viem/chains'
+
+const getZoraChainName = (chainId: number) => {
+  switch (chainId) {
+    case zora.id:
       return 'zora'
-    case 'zoraSepolia':
+    case zoraSepolia.id:
       return 'zsep'
-    case 'base':
-    case 'mainnet':
+    case base.id:
       return 'base'
-    case 'baseSepolia':
-    case 'sepolia':
+    case baseSepolia.id:
       return 'bsep'
     default:
       return 'base'

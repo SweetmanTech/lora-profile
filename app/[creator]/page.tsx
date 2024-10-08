@@ -1,23 +1,23 @@
 import ProfilePage from '@/components/ProfilePage'
-import getEvents from '@/lib/stack/getEvents'
 import fetchProfile from '@/lib/zora/fetchProfile'
-import { PointsProvider } from '@/providers/PointsProvider'
+import CollectionProvider from '@/providers/CollectionProvider'
+import { TabsProvider } from '@/providers/TabsProvider'
 import { ZoraProfileProvider } from '@/providers/ZoraProfileProvider'
 import _ from 'lodash'
-import { Address } from 'viem'
 
 export default async function Creator({ params }) {
   const creator = _.get(params, ['creator'])
   const profile = await fetchProfile(creator)
   const creatorAddress = profile.address
-  const events = await getEvents(creatorAddress as Address)
 
   return (
-    <ZoraProfileProvider profile={profile}>
-      <PointsProvider events={events}>
-        <ProfilePage />
-      </PointsProvider>
-    </ZoraProfileProvider>
+    <TabsProvider>
+      <ZoraProfileProvider profile={profile}>
+        <CollectionProvider creatorAddress={creatorAddress}>
+          <ProfilePage />
+        </CollectionProvider>
+      </ZoraProfileProvider>
+    </TabsProvider>
   )
 }
 
