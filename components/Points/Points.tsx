@@ -6,7 +6,7 @@ const Points = () => {
   const { events } = usePoints()
 
   return (
-    <div className="grid grid-cols-3 gap-2 overflow-y-auto max-h-[420px]">
+    <div className="w-screen md:w-full grid grid-cols-3 gap-1 md:gap-2 overflow-y-auto max-h-[270px]">
       {events.map((event, index) => (
         <Point key={index} event={event} />
       ))}

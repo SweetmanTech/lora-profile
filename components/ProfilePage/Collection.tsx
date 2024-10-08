@@ -19,13 +19,18 @@ const Collection = ({ data }: { data: EVENT_TYPE }) => {
   }
 
   return (
-    <button
-      className="relative flex-none w-[150px] h-[150px]"
-      type="button"
-      onClick={() => handleClick(data.metadata.collection)}
-    >
-      <Image src={getIpfsLink(collection?.image || '')} alt="" layout="fill" />
-    </button>
+    <div className="flex flex-col gap-4 md:gap-2 w-[74px] md:w-[150px]">
+      <button
+        className="relative flex-none w-[74px] md:w-[150px] aspect-square rounded-md overflow-hidden"
+        type="button"
+        onClick={() => handleClick(data.metadata.collection)}
+      >
+        <Image src={getIpfsLink(collection?.image || '')} alt="" layout="fill" />
+      </button>
+      <p className="w-full overflow-hidden text-ellipse truncate text-md text-center">
+        {collection?.name}
+      </p>
+    </div>
   )
 }
 
