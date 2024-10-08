@@ -56,7 +56,7 @@ const getTokenMetadatas = async (collections: COLLECTION_TYPE[]) => {
 
   const metadata: any = await Promise.all(metadataPromise)
 
-  return metadata.filter((metadata) => !metadata)
+  return metadata.filter((metadata) => metadata)
 }
 
 export default getTokenMetadatas
