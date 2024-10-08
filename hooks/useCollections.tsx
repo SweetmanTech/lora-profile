@@ -13,6 +13,7 @@ const useCollections = (creatorAddress: Address) => {
   const [metadataOfTokens, setMetadataOfTokens] = useState<
     (METADATA_TYPE & COLLECTION_TYPE & { tokenId: number })[]
   >([])
+  const [loading, setLoading] = useState(true)
 
   const getCollections = async (): Promise<COLLECTION_TYPE[]> => {
     const response = await fetch(`/api/collections?address=${creatorAddress}`)
@@ -27,10 +28,12 @@ const useCollections = (creatorAddress: Address) => {
 
   useEffect(() => {
     const init = async () => {
+      setLoading(true)
       let metadata = await getCollectionMetadatas(collections)
       setMetadataOfCollection(metadata)
       metadata = await getTokenMetadatas(collections)
       setMetadataOfTokens(metadata)
+      setLoading(false)
     }
 
     if (!collections) return
@@ -41,6 +44,7 @@ const useCollections = (creatorAddress: Address) => {
     metadataOfCollection,
     metadataOfTokens,
     collections,
+    loading,
   }
 }
 

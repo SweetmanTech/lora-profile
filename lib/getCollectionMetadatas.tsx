@@ -4,6 +4,7 @@ import { zoraCreator1155ImplABI } from '@zoralabs/protocol-deployments'
 import { Address } from 'viem'
 import { getPublicClient } from './clients'
 import groupByChainId from './groupByChainId'
+import fetchTimeout from './fetchTimeout'
 
 const getCollectionMetadatas = async (collections: COLLECTION_TYPE[]) => {
   let collectionUris = []
@@ -35,8 +36,7 @@ const getCollectionMetadatas = async (collections: COLLECTION_TYPE[]) => {
 
   const metadataPromise = collectionUris.map(async (uri: string, i: number) => {
     try {
-      const response = await fetch(getIpfsLink(uri))
-      const metadata = await response.json()
+      const metadata = await fetchTimeout(getIpfsLink(uri))
       return {
         ...metadata,
         ...filtered[i],
