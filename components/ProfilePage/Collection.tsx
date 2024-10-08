@@ -1,20 +1,17 @@
 'use client'
 
-import useCollection from '@/hooks/useCollection'
 import getZoraChainName from '@/lib/getZoraChainName'
 import getIpfsLink from '@/lib/ipfs/getIpfsLink'
 import getCollectionUrl from '@/lib/zora/getCollectionUrl'
-import { EVENT_TYPE } from '@/types/event'
+import { COLLECTION_TYPE } from '@/types/collection'
 import { METADATA_TYPE } from '@/types/metadata'
 import Image from 'next/image'
 
-const Collection = ({ data }: { data: EVENT_TYPE }) => {
-  const collection: METADATA_TYPE = useCollection(data)
-  const chainName = data.metadata.uniqueId.split('-')[0]
-
-  const handleClick = (address) => {
-    const isTestnet = chainName.toLowerCase().includes('sepolia')
-    const url = getCollectionUrl(getZoraChainName(chainName), address, isTestnet)
+const Collection = ({ data }: { data: METADATA_TYPE & COLLECTION_TYPE }) => {
+  const handleClick = () => {
+    const chainName = getZoraChainName(data.chainId)
+    const isTestnet = chainName.toLowerCase().includes('sep')
+    const url = getCollectionUrl(chainName, data.address, isTestnet)
     window.open(url, '_blank')
   }
 
@@ -23,12 +20,12 @@ const Collection = ({ data }: { data: EVENT_TYPE }) => {
       <button
         className="relative flex-none w-[74px] md:w-[150px] aspect-square rounded-md overflow-hidden"
         type="button"
-        onClick={() => handleClick(data.metadata.collection)}
+        onClick={handleClick}
       >
-        <Image src={getIpfsLink(collection?.image || '')} alt="" layout="fill" />
+        <Image src={getIpfsLink(data.image || '')} alt="" layout="fill" />
       </button>
       <p className="w-full overflow-hidden text-ellipse truncate text-md text-center">
-        {collection?.name}
+        {data?.name}
       </p>
     </div>
   )

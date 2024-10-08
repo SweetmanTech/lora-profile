@@ -1,14 +1,14 @@
 'use client'
-import { usePoints } from '@/providers/PointsProvider'
 import Point from './Point'
+import { useCollectionProvider } from '@/providers/CollectionProvider'
 
 const Points = () => {
-  const { events } = usePoints()
+  const { metadataOfTokens } = useCollectionProvider()
 
   return (
     <div className="w-screen md:w-full grid grid-cols-3 gap-1 md:gap-2 overflow-y-auto max-h-[270px]">
-      {events.map((event, index) => (
-        <Point key={index} event={event} />
+      {metadataOfTokens.map((metadata, index) => (
+        <Point key={index} data={metadata} />
       ))}
     </div>
   )

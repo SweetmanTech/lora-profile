@@ -1,19 +1,18 @@
 'use client'
 
-import getCollections from '@/lib/getCollections'
-import { usePoints } from '@/providers/PointsProvider'
 import Collection from './Collection'
-import { EVENT_TYPE } from '@/types/event'
+import { useCollectionProvider } from '@/providers/CollectionProvider'
+import { COLLECTION_TYPE } from '@/types/collection'
+import { METADATA_TYPE } from '@/types/metadata'
 
 const Collections = () => {
-  const { events } = usePoints()
-  const collections = getCollections(events)
+  const { metadataOfCollection } = useCollectionProvider()
 
   return (
     <div className="w-screen px-3 md:px-0 md:w-full max-w-3xl overflow-hidden mt-6 mb-2 border border-t">
       <div className="flex gap-2 overflow-x-auto">
-        {collections.map((collection: EVENT_TYPE) => (
-          <Collection data={collection} key={collection.address} />
+        {metadataOfCollection.map((metadata: METADATA_TYPE & COLLECTION_TYPE, index: number) => (
+          <Collection data={metadata} key={index} />
         ))}
       </div>
     </div>
