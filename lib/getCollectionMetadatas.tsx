@@ -47,7 +47,7 @@ const getCollectionMetadatas = async (collections: COLLECTION_TYPE[]) => {
   })
   const metadata: any = await Promise.all(metadataPromise)
 
-  return metadata.map((data) => !data)
+  return metadata.filter((data) => !data)
 }
 
 export default getCollectionMetadatas
