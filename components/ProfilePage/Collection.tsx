@@ -16,9 +16,9 @@ const Collection = ({ data }: { data: METADATA_TYPE & COLLECTION_TYPE }) => {
   }
 
   return (
-    <div className="flex flex-col gap-4 md:gap-2 w-[74px] md:w-[150px]">
+    <div className="flex flex-col gap-2 w-[74px] md:w-[150px]">
       <button
-        className="relative flex-none w-[74px] md:w-[150px] aspect-square rounded-md overflow-hidden"
+        className="relative w-[74px] md:w-[150px] aspect-square rounded-md overflow-hidden"
         type="button"
         onClick={handleClick}
       >

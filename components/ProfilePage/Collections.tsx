@@ -11,7 +11,7 @@ const Collections = () => {
 
   return (
     <div className="w-screen px-3 md:px-0 md:w-full max-w-3xl mt-6 mb-2 border border-t">
-      <div className="flex gap-2 overflow-x-auto">
+      <div className="flex gap-12 overflow-x-auto">
         {loading ? (
           <div className="w-full flex justify-center">
             <LoaderCircle className="animate-spin h-5 w-5" />

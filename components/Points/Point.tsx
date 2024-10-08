@@ -19,13 +19,8 @@ const Point = ({ data }: { data: METADATA_TYPE & COLLECTION_TYPE & { tokenId: nu
   }
 
   return (
-    <button className="relative w-full aspect-[1/1]" type="button" onClick={handleClick}>
-      <Image
-        src={getIpfsLink(data?.image || '')}
-        alt=""
-        layout="fill"
-        className="absolute w-full h-full left-0  top-0 object-cover"
-      />
+    <button className="relative w-full aspect-square" type="button" onClick={handleClick}>
+      <Image src={getIpfsLink(data?.image || '')} alt="" layout="fill" className="object-cover" />
     </button>
   )
 }
