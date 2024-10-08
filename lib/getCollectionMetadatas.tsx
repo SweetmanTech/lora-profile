@@ -33,17 +33,21 @@ const getCollectionMetadatas = async (collections: COLLECTION_TYPE[]) => {
     filtered = filtered.concat(filteredGroup)
   }
 
-  const metadataPromise = collectionUris.map(async (uri: string) => {
-    const response = await fetch(getIpfsLink(uri))
-    const metadata = await response.json()
-    return metadata
+  const metadataPromise = collectionUris.map(async (uri: string, i: number) => {
+    try {
+      const response = await fetch(getIpfsLink(uri))
+      const metadata = await response.json()
+      return {
+        ...metadata,
+        ...filtered[i],
+      }
+    } catch (error) {
+      return null
+    }
   })
   const metadata: any = await Promise.all(metadataPromise)
 
-  return metadata.map((data, i) => ({
-    ...data,
-    ...filtered[i],
-  }))
+  return metadata.map((data) => !data)
 }
 
 export default getCollectionMetadatas
